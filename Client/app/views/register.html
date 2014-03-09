@@ -1,0 +1,19 @@
+﻿<div class="col-sm-6" ng-controller="RegisterCtrl">
+    <form role="form" name="form" novalidate>
+        <h1><small>REGISTER</small></h1>
+        <div id="messages" ng-show="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+        <div class="form-group">
+            <label for="">User name</label>
+            <input type="text" class="form-control" ng-model="user.username" placeholder="User name" required>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" ng-model="user.confirmpassword" placeholder="Confirm Password" required>
+        </div>
+        <button ng-click="register()" ng-disabled="form.$invalid"  class=" btn btn-default">Register</button>
+    </form>
+</div>

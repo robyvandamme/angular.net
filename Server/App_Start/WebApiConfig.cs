@@ -12,6 +12,10 @@ namespace Server
     {
         public static void Register(HttpConfiguration config)
         {
+            // TODO: REVIEW FOR CORS CONFIG
+            // var cors = new EnableCorsAttribute("*", "*", "GET, POST, OPTIONS");
+            // config.EnableCors(cors);
+
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
