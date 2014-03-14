@@ -44,6 +44,7 @@
     <Content Include="app\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="app\scripts\account-service.js" />
+    <Content Include="app\scripts\constants.js" />
     <Content Include="app\scripts\controllers\account-controller.js" />
     <Content Include="app\scripts\controllers\register-controller.js" />
     <Content Include="app\scripts\controllers\login-controller.js" />

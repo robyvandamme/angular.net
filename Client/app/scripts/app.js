@@ -5,7 +5,8 @@ angular.module('clientApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'constants'
 ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -46,7 +47,6 @@ angular.module('clientApp', [
             redirectTo: '/'
   });
   });
-
 
 angular.module('clientApp').controller('AppCtrl', function ($scope, $rootScope) {
     $rootScope.$on('$routeChangeError', function (event, current, previous, rejection) {

@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-angular.module('clientApp').factory('accountService', function ($rootScope, $http, $resource, $q, $timeout, localStorageService) {
+angular.module('clientApp').factory('accountService', function ($rootScope, $http, localStorageService, config) {
 
-    var apiUrl = "http://localhost/angular.net.server"; // TODO: make conditional depending on environment (global varibable?)
+    var apiUrl = config.apiUrl;
     var loginUrl = "/token";
     var registerUrl = "/api/account/register";
 
