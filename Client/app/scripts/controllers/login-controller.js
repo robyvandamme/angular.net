@@ -1,31 +1,21 @@
 ﻿'use strict';
 
-angular.module('clientApp').controller('LoginCtrl', function($scope, $http, localStorageService) { 
-
-    var apiUrl = "http://localhost/angular.net.server"; // TODO: make conditional depending on environment (global variable?)
-    var loginUrl = "/token";
+angular.module('clientApp').controller('LoginCtrl', function($scope, $location, accountService) {
 
     $scope.user = {
         UserName: '',
         Password: ''
     };
 
-    $scope.login = function () {
-        var loginData = $.param({
-            grant_type: 'password',
-            username: $scope.user.username,
-            password: $scope.user.password
-        });
+    $scope.$on('error', function(event, data) {
+        $scope.errorMessage = data.errorMessage;
+    });
 
-        $http.post(apiUrl + loginUrl, loginData)
-            .success(function (data) {
-                // TODO: redirect to restricted area
-                localStorageService.add('accesToken', data.access_token);
-                localStorageService.add('userName', data.userName);
-            })
-           .error(function (error) {
-               $scope.errorMessage = error.error_description;
-           });
+    $scope.login = function() {
+        var promise = accountService.Login($scope.user);
+        promise.then(function() {
+            $location.url('/account'); // TODO: redirect to where the user requested
+        });
     };
 
 });

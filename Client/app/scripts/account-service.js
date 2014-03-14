@@ -1,14 +1,14 @@
 ﻿'use strict';
 
-angular.module('clientApp').factory('accountService', function ($http, $resource) {
+angular.module('clientApp').factory('accountService', function ($rootScope, $http, $resource, $q, $timeout, localStorageService) {
 
     var apiUrl = "http://localhost/angular.net.server"; // TODO: make conditional depending on environment (global varibable?)
     var loginUrl = "/token";
+    var registerUrl = "/api/account/register";
 
     var addExternalLoginUrl = "/api/Account/AddExternalLogin";
     var changePasswordUrl = "/api/Account/changePassword";
     var logoutUrl = "/api/Account/Logout";
-    var registerUrl = "/api/Account/Register";
     var registerExternalUrl = "/api/Account/RegisterExternal";
     var removeLoginUrl = "/api/Account/RemoveLogin";
     var setPasswordUrl = "/api/Account/setPassword";
@@ -23,11 +23,17 @@ angular.module('clientApp').factory('accountService', function ($http, $resource
         });
         return $http.post(apiUrl + loginUrl, loginData)
             .success(function (data) {
-                console.log(data);
+                localStorageService.add('accessToken', data.access_token);
+                localStorageService.add('userName', data.userName);
             })
            .error(function (error) {
-               console.log(error);
+               $rootScope.$broadcast('error', {errorMessage: error.error_description});
         });
+    };
+
+    var logout = function() {
+        localStorageService.remove('accessToken');
+        localStorageService.remove('userName');
     };
 
     var register = function (user) {
@@ -46,6 +52,7 @@ angular.module('clientApp').factory('accountService', function ($http, $resource
 
     return {
         Login:login,
-        Register: register
+        Register: register,
+        Logout: logout
     };
 });
