@@ -37,17 +37,17 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     };
 
     var register = function (user) {
-//
-//        var token = $http({
-//            method: 'POST',
-//            url: 'http://localhost/angular.net.server/api/account/register',
-//            data:
-//            {
-//                username: user.username, password: user.password, confirmpassword: user.confirmpassword
-//            }
-//        });
-//        return token;
-
+        return $http.post(apiUrl + registerUrl, {
+                username: user.username,
+                password: user.password,
+                confirmpassword: user.confirmpassword
+            })
+            .error(function(error) {
+                $rootScope.$broadcast('error', { errorMessage: error.modelState });
+            })
+            .then(function onSuccess(response) {
+                return login(user);
+            });
     };
 
     return {

@@ -1,4 +1,5 @@
 'use strict";';
+
 angular.module('constants', [])
     .constant('config', {
         'environment': 'dev',

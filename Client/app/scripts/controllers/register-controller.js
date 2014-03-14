@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('clientApp').controller('RegisterCtrl', function($scope, $http) { 
+angular.module('clientApp').controller('RegisterCtrl', function($scope, $location, accountService) { 
 
     $scope.user = {
         UserName: '',
@@ -8,22 +8,15 @@ angular.module('clientApp').controller('RegisterCtrl', function($scope, $http) {
         ConfirmPassword: ''
     };
 
+    $scope.$on('error', function (event, data) {
+        $scope.errorMessage = data.errorMessage;
+    });
+
     $scope.register = function () {
-            $http({
-                method: 'POST',
-                url: 'http://localhost/angular.net.server/api/account/register',
-                data:
-                {
-                    username: $scope.user.username, password: $scope.user.password, confirmpassword: $scope.user.confirmpassword
-                }
-            }).success(function (data) {
-                // on success: get a token for the registered user
-                // that logic is currently in the logincontroller....
-                console.log(data);
-            }).error(function (error) {
-                //{"message":"The request is invalid.","modelState":{"model.Password":["The Password must be at least 6 characters long."]}}
-                // {"message":"The request is invalid.","modelState":{"":["Name xxx is already taken."]}}
-                $scope.errorMessage = error.modelState;
-            });
+        var promise = accountService.Register($scope.user);
+        promise.then(function () {
+                $location.url('/account'); // TODO: redirect to where the user requested?
+        });
     };
+
 });

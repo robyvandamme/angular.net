@@ -16,11 +16,27 @@ angular.module('clientApp', [
           })
           .when('/login', {
               templateUrl: 'views/login.html',
-              controller: 'LoginCtrl'
+              controller: 'LoginCtrl',
+              resolve: {
+                  loggedIn: function ($location, localStorageService) {
+                      var token = localStorageService.get('accessToken');
+                      if (token != undefined) {
+                          $location.url('/account');
+                      }
+                  }
+              }
           })
           .when('/register', {
               templateUrl: 'views/register.html',
-              controller: 'RegisterCtrl'
+              controller: 'RegisterCtrl',
+              resolve: {
+                  loggedIn: function ($location, localStorageService) {
+                      var token = localStorageService.get('accessToken');
+                      if (token != undefined) {
+                          $location.url('/account');
+                      }
+                  }
+              }
           })
           .when('/account', {
               templateUrl: 'views/account.html',
