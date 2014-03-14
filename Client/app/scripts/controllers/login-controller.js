@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('clientApp').controller('LoginCtrl', function($scope, $location, accountService) {
+angular.module('clientApp').controller('LoginCtrl', function ($scope, $location, accountService) {
 
     $scope.user = {
         UserName: '',
@@ -17,5 +17,4 @@ angular.module('clientApp').controller('LoginCtrl', function($scope, $location, 
             $location.url('/account'); // TODO: redirect to where the user requested
         });
     };
-
 });

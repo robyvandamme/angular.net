@@ -25,6 +25,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
             .success(function (data) {
                 localStorageService.add('accessToken', data.access_token);
                 localStorageService.add('userName', data.userName);
+                $rootScope.$broadcast('userchanged');
             })
            .error(function (error) {
                $rootScope.$broadcast('error', {errorMessage: error.error_description});
@@ -34,6 +35,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     var logout = function() {
         localStorageService.remove('accessToken');
         localStorageService.remove('userName');
+        $rootScope.$broadcast('userchanged');
     };
 
     var register = function (user) {
