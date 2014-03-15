@@ -80,3 +80,19 @@ angular.module('clientApp').controller('AppCtrl', function ($rootScope, localSto
     });
 
 });
+
+angular.module('clientApp').factory('httpRequestInterceptor', function (localStorageService) {
+    return {
+        request: function (config) {
+            var userToken = localStorageService.get('accessToken');
+            if (userToken != undefined) {
+                config.headers['Authorization'] = 'Bearer ' + userToken;
+            }
+            return config;
+        }
+    };
+});
+
+angular.module('clientApp').config(function ($httpProvider) {
+    $httpProvider.interceptors.push('httpRequestInterceptor');
+});

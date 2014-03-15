@@ -5,14 +5,13 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     var apiUrl = config.apiUrl;
     var loginUrl = "/token";
     var registerUrl = "/api/account/register";
+    var changePasswordUrl = "/api/account/changepassword";
 
     var addExternalLoginUrl = "/api/Account/AddExternalLogin";
-    var changePasswordUrl = "/api/Account/changePassword";
     var logoutUrl = "/api/Account/Logout";
     var registerExternalUrl = "/api/Account/RegisterExternal";
     var removeLoginUrl = "/api/Account/RemoveLogin";
     var setPasswordUrl = "/api/Account/setPassword";
-
     var userInfoUrl = "/api/Account/UserInfo";
 
     var login = function (user) {
@@ -35,6 +34,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     var logout = function() {
         localStorageService.remove('accessToken');
         localStorageService.remove('userName');
+        delete $http.defaults.headers.common['Authorization'];
         $rootScope.$broadcast('userchanged');
     };
 
@@ -52,9 +52,26 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
             });
     };
 
+    var changePassword = function(password) {
+        return $http.post(apiUrl + changePasswordUrl, {
+                oldpassword: password.oldpassword,
+                newpassword: password.newpassword,
+                confirmpassword: password.confirmpassword
+            })
+            .success(function () {
+                console.log('success');
+                $rootScope.$broadcast('success', { errorMessage: "Password changed." }); // TODO: add success message logic.
+            })
+            .error(function (error) {
+                console.log(error.modelState);
+                $rootScope.$broadcast('error', { errorMessage: error.modelState });
+            });
+    };
+
     return {
         Login:login,
         Register: register,
-        Logout: logout
+        Logout: logout,
+        ChangePassword: changePassword
     };
 });
