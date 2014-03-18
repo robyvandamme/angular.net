@@ -147,10 +147,6 @@ module.exports = function (grunt) {
       }
     },
 
-
-
-
-
     // Renames files for browser caching purposes
     rev: {
       dist: {
@@ -321,7 +317,31 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+      // ngconstant: we need to replace the constants in the constants.js files with the correct environment variables
+    ngconstant: {
+            options: {
+                name: 'constants',
+                dest: '<%= yeoman.app %>/scripts/constants.js'
+            },
+        prod: {
+            constants: {
+                config: {
+                    environment: 'prod',
+                    apiUrl: 'https://angulardotnet.azurewebsites.net'
+                }
+            }
+        },
+        dev: {
+            constants: {
+                config: {
+                    environment: 'dev',
+                    apiUrl: 'http://angular.server'
+                }
+            }
+        }
     }
+
   });
 
 
@@ -375,4 +395,17 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('prod', [
+    'ngconstant:prod',
+    'test',
+    'build'
+  ]);
+
+  grunt.registerTask('dev', [
+    'ngconstant:dev',
+    'test',
+    'build'
+  ]);
+
 };
