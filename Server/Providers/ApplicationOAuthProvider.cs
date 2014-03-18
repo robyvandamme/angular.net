@@ -78,6 +78,8 @@ namespace Server.Providers
 
         public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
         {
+            // TODO: in order to allow other redirect url's we need to allow it to pass through here...
+            // for now I changed the public clientid to client....
             if (context.ClientId == _publicClientId)
             {
                 Uri expectedRootUri = new Uri(context.Request.Uri, "/");

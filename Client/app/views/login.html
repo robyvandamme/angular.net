@@ -12,6 +12,15 @@
         </div>
         <button ng-click="login()" ng-disabled="form.$invalid" class=" btn btn-default">Login</button>
     </form>
+    <hr />
+    <h1><small>EXTERNAL LOGIN</small></h1>
+    <form name="externalLoginForm" role="form">
+        <ul>
+            <li ng-repeat="provider in externalLoginProviders">
+                <a href="{{ apiUrl + provider.url}}" class="btn">{{ provider.name }}</a>
+            </li>
+        </ul>
+    </form> 
 </div>
 
 
