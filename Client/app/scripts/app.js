@@ -11,51 +11,51 @@ angular.module('clientApp', [
   .config(function ($routeProvider) {
       $routeProvider
           .when('/', {
-              templateUrl: 'views/main.html',
-              controller: 'MainCtrl'
-          })
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
           .when('/login', {
-              templateUrl: 'views/login.html',
-              controller: 'LoginCtrl',
-              resolve: {
-                  loggedIn: function ($location, localStorageService) {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        resolve: {
+          loggedIn: ['$location', 'localStorageService', function ($location, localStorageService) {
                       var token = localStorageService.get('accessToken');
-                      if (token != undefined) {
-                          $location.url('/account');
+                      if (token !== undefined) {
+                        $location.url('/account');
                       }
-                  }
-              }
-          })
+                    }]
+        }
+      })
           .when('/register', {
-              templateUrl: 'views/register.html',
-              controller: 'RegisterCtrl',
-              resolve: {
-                  loggedIn: function ($location, localStorageService) {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        resolve: {
+          loggedIn: ['$location', 'localStorageService', function ($location, localStorageService) {
                       var token = localStorageService.get('accessToken');
-                      if (token != undefined) {
-                          $location.url('/account');
+                      if (token !== undefined) {
+                        $location.url('/account');
                       }
-                  }
-              }
-          })
+                    }]
+        }
+      })
           .when('/account', {
               templateUrl: 'views/account.html',
               controller: 'AccountCtrl',
               resolve: {
-                  authorize: function ($location, localStorageService) {
+                  authorize:  ['$location', 'localStorageService',function ($location, localStorageService) {
                       var token = localStorageService.get('accessToken');
                       if (token == undefined) {
                           $location.url('/login');
                       }
-                  }
+                  }]
               }
           })
           .when('/logout', {
             resolve: {
-                logout: function ($location, accountService) {
+                logout: ['$location', 'accountService', function ($location, accountService) {
                     accountService.Logout();
                     $location.url('/login');
-                }
+                }]
             }      
           })
          .otherwise({
@@ -81,7 +81,7 @@ angular.module('clientApp').controller('AppCtrl', function ($rootScope, localSto
 
 });
 
-angular.module('clientApp').factory('httpRequestInterceptor', function (localStorageService) {
+angular.module('clientApp').factory('httpRequestInterceptor', ['localStorageService', function (localStorageService) {
     return {
         request: function (config) {
             var userToken = localStorageService.get('accessToken');
@@ -91,8 +91,8 @@ angular.module('clientApp').factory('httpRequestInterceptor', function (localSto
             return config;
         }
     };
-});
+}]);
 
-angular.module('clientApp').config(function ($httpProvider) {
+angular.module('clientApp').config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('httpRequestInterceptor');
-});
+}]);

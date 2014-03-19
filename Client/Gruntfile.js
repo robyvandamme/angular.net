@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  var awsCredentialsJson = grunt.option('awsCredentialsJson') || 'aws-credentials.json';
+    
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -318,6 +320,7 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
+
       // ngconstant: we need to replace the constants in the constants.js files with the correct environment variables
     ngconstant: {
             options: {
@@ -340,10 +343,30 @@ module.exports = function (grunt) {
                 }
             }
         }
-    }
+    },
 
+    aws: grunt.file.readJSON(awsCredentialsJson),
+    
+    // TODO: split into multiple tasks for files with different lifetime (img/ css/ js)
+    s3: {
+          options: {
+              accessKeyId: '<%= aws.accessKeyId %>',
+              secretAccessKey: '<%= aws.secretAccessKey %>',
+              region: 'eu-west-1',
+              bucket: 'angulardotnet',
+              cache: true
+//            headers: {
+//                // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
+//                "Cache-Control": "max-age=630720000, public",
+//                "Expires": new Date(Date.now() + 63072000000).toUTCString()
+//            }
+          },
+          prod: {
+              cwd: '<%= yeoman.dist %>/',
+              src: '**'
+          }
+      }
   });
-
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -398,14 +421,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('prod', [
     'ngconstant:prod',
-    'test',
-    'build'
+//    'test', TODO: uncomment test task
+    'build',
+    's3:prod'
   ]);
 
-  grunt.registerTask('dev', [
-    'ngconstant:dev',
-    'test',
-    'build'
-  ]);
 
 };
