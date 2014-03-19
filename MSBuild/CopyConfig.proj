@@ -1,0 +1,14 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="CopyConfig;" >
+  
+  <ItemGroup>
+    <ConfigFiles Include ="C:\Temp\AngularDotNet\Prod\appSettings.config"></ConfigFiles>
+    <ConfigFiles Include ="C:\Temp\AngularDotNet\Prod\connectionStrings.config"></ConfigFiles>
+  </ItemGroup>
+
+  <Target Name="CopyConfig">
+    <Copy
+          SourceFiles="@(ConfigFiles)"
+          DestinationFolder="..\Server\Config"/>
+  </Target>
+  
+</Project>
