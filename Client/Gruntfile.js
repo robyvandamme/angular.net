@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-ftpush');
+
   var awsCredentialsJson = grunt.option('awsCredentialsJson') || 'aws-credentials.json';
     
   // Define the configuration for all the tasks
@@ -365,7 +367,20 @@ module.exports = function (grunt) {
               cwd: '<%= yeoman.dist %>/',
               src: '**'
           }
-      }
+    },
+
+    // ftp to azure
+    ftpush: {
+        build: {
+            auth: {
+                host: 'waws-prod-am2-003.ftp.azurewebsites.windows.net',
+                port: 21,
+                authKey: 'angulardotnetclient'
+            },
+            src: '<%= yeoman.dist %>/',
+            dest: '/site/wwwroot'
+        }
+    }
   });
 
   grunt.registerTask('serve', function (target) {
@@ -423,7 +438,8 @@ module.exports = function (grunt) {
     'ngconstant:prod',
 //    'test', TODO: uncomment test task
     'build',
-    's3:prod'
+//    's3:prod'
+    'ftpush'
   ]);
 
 

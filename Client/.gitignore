@@ -4,3 +4,5 @@ dist
 .sass-cache
 app/bower_components
 aws-credentials.json
+.ftppass
+.grunt/
