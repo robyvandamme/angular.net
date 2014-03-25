@@ -19,6 +19,9 @@ using Server.Results;
 
 namespace Server.Controllers
 {
+#if(!DEBUG)
+    [RequireHttps]    
+#endif
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

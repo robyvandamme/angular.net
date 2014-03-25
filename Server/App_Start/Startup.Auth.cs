@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Web;
 using System.Web.Cors;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -28,7 +29,7 @@ namespace Server
                 Provider = new ApplicationOAuthProvider(PublicClientId, UserManagerFactory),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AllowInsecureHttp = true // TODO: only allow in debug
+                AllowInsecureHttp = HttpContext.Current.IsDebuggingEnabled // only allow in debug 
             };
         }
 
@@ -52,9 +53,9 @@ namespace Server
             app.UseOAuthBearerTokens(OAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: ConfigurationManager.AppSettings.Get("OAuthMicrosoftKey"),
+                clientSecret: ConfigurationManager.AppSettings.Get("OAuthMicrosoftSecret"));
 
             app.UseTwitterAuthentication(
                 consumerKey: ConfigurationManager.AppSettings.Get("OAuthTwitterKey"),
