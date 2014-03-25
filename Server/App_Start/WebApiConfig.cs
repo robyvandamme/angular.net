@@ -13,6 +13,10 @@ namespace Server
     {
         public static void Register(HttpConfiguration config)
         {
+#if(DEBUG)
+            config.EnableSystemDiagnosticsTracing();     
+#endif
+
             // TODO: REVIEW FOR CORS CONFIG
 //             var cors = new EnableCorsAttribute("*", "*", "GET, POST, OPTIONS");
 //             config.EnableCors(cors);

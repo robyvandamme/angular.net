@@ -28,7 +28,7 @@ namespace Server
                 Provider = new ApplicationOAuthProvider(PublicClientId, UserManagerFactory),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AllowInsecureHttp = true
+                AllowInsecureHttp = true // TODO: only allow in debug
             };
         }
 
@@ -51,7 +51,6 @@ namespace Server
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
 
-
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -61,9 +60,9 @@ namespace Server
                 consumerKey: ConfigurationManager.AppSettings.Get("OAuthTwitterKey"),
                 consumerSecret: ConfigurationManager.AppSettings.Get("OAuthTwitterSecret"));
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: ConfigurationManager.AppSettings.Get("OAuthFacebookKey"),
+                appSecret: ConfigurationManager.AppSettings.Get("OAuthFacebookSecret"));
 
             app.UseGoogleAuthentication();
         }
