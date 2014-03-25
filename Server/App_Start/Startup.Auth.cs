@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Cors;
 using Microsoft.AspNet.Identity;
@@ -56,9 +57,9 @@ namespace Server
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            app.UseTwitterAuthentication(
+                consumerKey: ConfigurationManager.AppSettings.Get("OAuthTwitterKey"),
+                consumerSecret: ConfigurationManager.AppSettings.Get("OAuthTwitterSecret"));
 
             //app.UseFacebookAuthentication(
             //    appId: "",
