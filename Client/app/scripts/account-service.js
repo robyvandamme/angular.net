@@ -7,14 +7,14 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     var registerUrl = '/api/account/register';
     var changePasswordUrl = '/api/account/changepassword';
     var availableExternalLoginsUrl = '/api/account/externallogins';
+    var userInfoUrl = '/api/account/userinfo';
 
     var addExternalLoginUrl = '/api/Account/AddExternalLogin';
     var logoutUrl = '/api/Account/Logout';
     var registerExternalUrl = '/api/Account/RegisterExternal';
     var removeLoginUrl = '/api/Account/RemoveLogin';
     var setPasswordUrl = '/api/Account/setPassword';
-    var userInfoUrl = '/api/Account/UserInfo';
-  
+   
     var login = function (user) {
         var loginData = $.param({
             grant_type: 'password',
@@ -33,20 +33,14 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
       };
 
     var getExternalLogins = function () {
-        var returnUrl = $location.absUrl();
+        // we can not use the # in the url, since that gets rejected, see OAUTH specs for more info on this.
+        var returnUrl = $location.$$protocol + '://' + $location.$$host;
         var theUrl = apiUrl + availableExternalLoginsUrl + '?returnurl=' + (encodeURIComponent(returnUrl)) +
               '&generateState=' + 'true'; /// TODO: check what generateState is for....
         return $http.get(theUrl).success(function(result) {
             console.log(result);
+            // TODO: broadcast on error...
           });
-      };
-
-    var loginExternal = function (url) {
-        // TODO: check if we need this, for now just added a href in the login page.
-        // since it needs to be a sync get as far as I can tell...
-        //http://angular.server/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%2Fangular.net.client&state=r5-GtSlVqW0GQJVvZ143LgbxODu4e0BNIwoxJ8TIp-o1
-        var completeUrl = apiUrl + url;
-        return $http.get(completeUrl);
       };
 
     var logout = function() {
@@ -84,7 +78,18 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
                 console.log(error.modelState);
                 $rootScope.$broadcast('error', { errorMessage: error.modelState });
               });
-      };
+    };
+
+    var getUserInfo = function() {
+        return $http.get(apiUrl + userInfoUrl).success(function(data) {
+            if (data.hasRegistered) {
+                localStorageService.add('userName', data.userName);
+                $rootScope.$broadcast('userchanged');
+            }
+        }). error(function() {
+            // TODO. do something relevant here...
+        });
+    };
 
     return {
         ApiUrl: apiUrl,
@@ -93,7 +98,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
         Logout: logout,
         ChangePassword: changePassword,
         GetExternalLogins: getExternalLogins,
-        LoginExternal: loginExternal
+        GetUserInfo: getUserInfo
       };
         
   });

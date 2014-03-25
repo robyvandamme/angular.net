@@ -15,9 +15,9 @@
     <hr />
     <h1><small>EXTERNAL LOGIN</small></h1>
     <form name="externalLoginForm" role="form">
-        <ul>
+        <ul class="list-inline">
             <li ng-repeat="provider in externalLoginProviders">
-                <a href="{{ apiUrl + provider.url}}" class="btn">{{ provider.name }}</a>
+                <button class="btn btn-default" ng-click="loginExternal(provider.url)">{{ provider.name }}</button>
             </li>
         </ul>
     </form> 

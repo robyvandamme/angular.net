@@ -8,6 +8,9 @@ angular.module('clientApp', [
   'LocalStorageModule',
   'constants'
 ])
+    .config(function ($locationProvider) {
+        $locationProvider.html5Mode(false); 
+    })
   .config(function ($routeProvider) {
       $routeProvider
           .when('/', {
@@ -59,7 +62,26 @@ angular.module('clientApp', [
         }
       })
          .otherwise({
-        redirectTo: '/'
+             redirectTo: '/',
+             resolve: {
+                 inspectUrl: ['$window', '$location', 'localStorageService','accountService', function ($window, $location, localStorageService, accountService) {
+                     var hash = $window.location.hash;
+                     // verify what type of hash this is
+                     if (hash.indexOf('access_token') > 0) {
+                         var token = hash.substring((hash.indexOf('=') + 1), hash.indexOf('&'));
+                         localStorageService.add('accessToken', token);
+                         // so, user logged in? we don't have a user name....
+                         var promise = accountService.GetUserInfo().then(function(result) {
+                              $location.url('/account');
+                         });
+                     } else if (hash.indexOf('error') > 0) {
+                         // TODO: ah, we came from where?... can be anything really... currently only oauth though
+                         // so show login and an error?
+                     } else {
+                         // TODO: what else?
+                     }
+                 }]
+             }
       });
     });
 

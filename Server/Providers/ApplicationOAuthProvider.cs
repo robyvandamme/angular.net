@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -76,20 +78,25 @@ namespace Server.Providers
             return Task.FromResult<object>(null);
         }
 
+        private static ICollection<Uri> _registeredClients;
+
         public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
         {
-            // TODO: in order to allow other redirect url's we need to allow it to pass through here...
-            // for now I changed the public clientid to client....
-            if (context.ClientId == _publicClientId)
+            // TODO: REFACTOR > code identical to CORS, same clients
+            if (_registeredClients == null)
             {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
-
-                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
+                _registeredClients = new Collection<Uri>();
+                string[] domains = ConfigurationManager.AppSettings["CORS"].Split(';');
+                foreach (var domain in domains)
                 {
-                    context.Validated();
+                    _registeredClients.Add(new Uri(domain));
                 }
             }
-
+            var client = new Uri(context.RedirectUri);
+            if (context.ClientId == _publicClientId && _registeredClients.Any(o => o.IsBaseOf(client)))
+            {
+                context.Validated();
+            }
             return Task.FromResult<object>(null);
         }
 

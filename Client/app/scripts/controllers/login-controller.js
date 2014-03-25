@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('clientApp').controller('LoginCtrl', function ($scope, $location, accountService) {
+angular.module('clientApp').controller('LoginCtrl', function ($scope, $location, $window, $http, accountService) {
 
     $scope.apiUrl = accountService.ApiUrl;
 
@@ -26,11 +26,8 @@ angular.module('clientApp').controller('LoginCtrl', function ($scope, $location,
       };
 
     $scope.loginExternal = function (loginUrl) {
-        var promise = accountService.LoginExternal(loginUrl);
-        promise.then(function () {
-            $location.url('/account'); // TODO: redirect to where the user requested
-          });
-      };
+        $window.location = ($scope.apiUrl + loginUrl);
+    };
 
     // TODO: this gets called twice, make sure we make this call only once.    
     accountService.GetExternalLogins().success(function(result) {

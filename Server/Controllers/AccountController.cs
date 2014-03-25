@@ -224,6 +224,12 @@ namespace Server.Controllers
         {
             if (error != null)
             {
+                // redirect to our client url with the same error suffix check for the #error param
+                var redirect = this.RequestContext.Url.Request.RequestUri.ParseQueryString().GetValues("redirect_uri");
+                if (redirect != null && redirect.Any())
+                {
+                    return Redirect(Url.Content(redirect[0]) + "#error=" + Uri.EscapeDataString(error));
+                }
                 return Redirect(Url.Content("~/") + "#error=" + Uri.EscapeDataString(error));
             }
 
