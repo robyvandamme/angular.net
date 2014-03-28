@@ -9,6 +9,8 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     var availableExternalLoginsUrl = '/api/account/externallogins';
     var userInfoUrl = '/api/account/userinfo';
 
+    var userAccountInfoUrl = '/api/account/manageinfo';
+
     var addExternalLoginUrl = '/api/Account/AddExternalLogin';
     var logoutUrl = '/api/Account/Logout';
     var registerExternalUrl = '/api/Account/RegisterExternal';
@@ -92,6 +94,15 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
         });
     };
 
+    var getUserAccountInfo = function () {
+        var querystring = '?returnUrl=/';
+        var url = apiUrl + userAccountInfoUrl + querystring;
+        return $http.get(url).success(function (data) {
+        }).error(function () {
+            // TODO. do something relevant here...
+        });
+    };
+
     return {
         ApiUrl: apiUrl,
         Login: login,
@@ -99,7 +110,8 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
         Logout: logout,
         ChangePassword: changePassword,
         GetExternalLogins: getExternalLogins,
-        GetUserInfo: getUserInfo
+        GetUserInfo: getUserInfo,
+        GetUserAccountInfo: getUserAccountInfo
       };
         
   });

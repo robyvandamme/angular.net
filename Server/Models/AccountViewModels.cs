@@ -20,6 +20,8 @@ namespace Server.Models
 
         public string UserName { get; set; }
 
+        public string EmailAddress { get; set; }
+
         public IEnumerable<UserLoginInfoViewModel> Logins { get; set; }
 
         public IEnumerable<ExternalLoginViewModel> ExternalLoginProviders { get; set; }

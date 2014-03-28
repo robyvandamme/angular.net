@@ -2,10 +2,6 @@
 
 angular.module('clientApp').controller('AccountCtrl', function ($scope, localStorageService, accountService) {
 
-    $scope.user = {
-        UserName: ''
-    };
-
     $scope.password = {
         OldPassword: '',
         NewPassword: '',
@@ -25,9 +21,16 @@ angular.module('clientApp').controller('AccountCtrl', function ($scope, localSto
     };
 
     var getAccount = function () {
-        $scope.user.username = localStorageService.get('userName');
+        var promise = accountService.GetUserAccountInfo();
+        promise.then(function(result) {
+            console.log(result.data);
+            $scope.user = result.data;
+            var localLogin = "Local";
+            $scope.user.hasLocalPassword = _.findWhere($scope.user.logins, { loginProvider: localLogin }) !== undefined;
+            $scope.user.externalAccounts = _.filter($scope.user.logins, function(login) { return login.loginProvider !== localLogin; });
+        });
     };
 
-    getAccount();
+   getAccount();
 
 });
