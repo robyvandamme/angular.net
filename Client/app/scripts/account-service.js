@@ -53,6 +53,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
     var register = function (user) {
         return $http.post(apiUrl + registerUrl, {
           username: user.username,
+          emailaddress: user.email,
           password: user.password,
           confirmpassword: user.confirmpassword
         })

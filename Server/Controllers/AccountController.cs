@@ -34,14 +34,14 @@ namespace Server.Controllers
         {
         }
 
-        public AccountController(UserManager<IdentityUser> userManager,
+        public AccountController(UserManager<ApplicationUser> userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
         }
 
-        public UserManager<IdentityUser> UserManager { get; private set; }
+        public UserManager<ApplicationUser> UserManager { get; private set; }
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
@@ -255,7 +255,7 @@ namespace Server.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            IdentityUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -331,9 +331,9 @@ namespace Server.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityUser user = new IdentityUser
+            ApplicationUser user = new ApplicationUser
             {
-                UserName = model.UserName
+                UserName = model.UserName, EmailAddress = model.EmailAddress
             };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -365,7 +365,7 @@ namespace Server.Controllers
                 return InternalServerError();
             }
 
-            IdentityUser user = new IdentityUser
+            ApplicationUser user = new ApplicationUser
             {
                 UserName = model.UserName
             };
@@ -374,6 +374,7 @@ namespace Server.Controllers
                 LoginProvider = externalLogin.LoginProvider,
                 ProviderKey = externalLogin.ProviderKey
             });
+
             IdentityResult result = await UserManager.CreateAsync(user);
             IHttpActionResult errorResult = GetErrorResult(result);
 

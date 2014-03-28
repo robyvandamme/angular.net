@@ -11,6 +11,8 @@ using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Server.Db;
+using Server.Models;
 using Server.Providers;
 
 namespace Server
@@ -21,7 +23,7 @@ namespace Server
         {
             PublicClientId = "client";
 
-            UserManagerFactory = () => new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+            UserManagerFactory = () => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
@@ -35,7 +37,7 @@ namespace Server
 
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
-        public static Func<UserManager<IdentityUser>> UserManagerFactory { get; set; }
+        public static Func<UserManager<ApplicationUser>> UserManagerFactory { get; set; }
 
         public static string PublicClientId { get; private set; }
 

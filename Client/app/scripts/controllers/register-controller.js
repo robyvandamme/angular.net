@@ -1,9 +1,10 @@
 ﻿'use strict';
 
-angular.module('clientApp').controller('RegisterCtrl', function($scope, $location, accountService, localStorageService) { 
+angular.module('clientApp').controller('RegisterCtrl', function($scope, $location, accountService, localStorageService) {
 
     $scope.user = {
         UserName: '',
+        Email: '',
         Password: '',
         ConfirmPassword: ''
     };
