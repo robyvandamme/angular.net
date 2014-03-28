@@ -19,8 +19,9 @@ namespace Server
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            // TODO; see if we handle the migrations ourselves or have WebDeploy take care of it
-//            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            // TODO; see if we handle the migrations here or have WebDeploy take care of it
+            // Do it here for now, for webdeploy db credentials need to be added to the pubxml file
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
 
         }
     }
