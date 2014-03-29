@@ -1,10 +1,10 @@
 ﻿<div class="header" ng-controller="AppCtrl">
     <ul class="nav nav-pills pull-right" ng-model="user">
-        <li><a ng-href="#/">Home</a></li>
-        <li ng-hide="user.LoggedIn"><a ng-href="#/login">Login</a></li>
-        <li ng-hide="user.LoggedIn"><a ng-href="#/register">Register</a></li>
-        <li ng-show="user.LoggedIn"><a ng-href="#/account">{{ user.UserName }}</a></li>
-        <li ng-show="user.LoggedIn"><a ng-href="#/logout">Log Out</a></li>
+        <li><a ng-href="/">Home</a></li>
+        <li ng-hide="user.LoggedIn"><a ng-href="/login">Login</a></li>
+        <li ng-hide="user.LoggedIn"><a ng-href="/register">Register</a></li>
+        <li ng-show="user.LoggedIn"><a ng-href="/account">{{ user.UserName }}</a></li>
+        <li ng-show="user.LoggedIn"><a ng-href="/logout">Log Out</a></li>
     </ul>
     <h3 class="text-muted">Angular.Net</h3>
 </div>
