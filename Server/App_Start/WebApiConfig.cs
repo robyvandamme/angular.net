@@ -4,8 +4,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.ExceptionHandling;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using Server.ExceptionHandling;
 
 namespace Server
 {
@@ -31,6 +33,9 @@ namespace Server
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            // replace the exceptionhandler with our own
+            config.Services.Replace(typeof(IExceptionHandler), new GenericTextExceptionHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
