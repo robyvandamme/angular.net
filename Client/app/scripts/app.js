@@ -95,8 +95,24 @@ angular.module('clientApp').factory('tokenInterceptor', ['localStorageService', 
             return config;
           }
       };
-  }]);
+}]);
+
+angular.module('clientApp').factory('securityInterceptor', ['$rootScope', '$q', '$location', 'localStorageService',
+  function ($rootScope, $q, $location, localStorageService) {
+  return {
+    responseError: function (response) {
+      if (response.status === 401)
+        // TODO: check what we want to broadcast here.
+//        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated,
+//                              response); 
+        localStorageService.remove('accessToken');
+        $location.path('/login');
+        return $q.reject(response);
+    }
+  };
+}]);
 
 angular.module('clientApp').config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('tokenInterceptor');
+    $httpProvider.interceptors.push('securityInterceptor');
   }]);
