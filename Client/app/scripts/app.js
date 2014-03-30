@@ -85,25 +85,7 @@ angular.module('clientApp', [
       });
     });
 
-angular.module('clientApp').controller('AppCtrl', function ($rootScope, localStorageService) {
-    $rootScope.$on('$routeChangeError', function (event, current, previous, rejection) {
-        // TODO: here we can check what type of rejection: unauthorized > redirect to login
-        //  $location.url('/login');
-        console.log('Some service has failed: ', rejection);
-      });
-
-    $rootScope.user = {
-        UserName: localStorageService.get('userName'),
-        get LoggedIn() { return this.UserName !== null; }
-      };
-
-    $rootScope.$on('userchanged', function () {
-        $rootScope.user.UserName = localStorageService.get('userName');
-      });
-
-  });
-
-angular.module('clientApp').factory('httpRequestInterceptor', ['localStorageService', function (localStorageService) {
+angular.module('clientApp').factory('tokenInterceptor', ['localStorageService', function (localStorageService) {
     return {
         request: function (config) {
             var userToken = localStorageService.get('accessToken');
@@ -116,5 +98,5 @@ angular.module('clientApp').factory('httpRequestInterceptor', ['localStorageServ
   }]);
 
 angular.module('clientApp').config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.interceptors.push('httpRequestInterceptor');
+    $httpProvider.interceptors.push('tokenInterceptor');
   }]);
