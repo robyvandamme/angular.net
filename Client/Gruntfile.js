@@ -378,7 +378,8 @@ module.exports = function (grunt) {
                 authKey: 'angulardotnetclient'
             },
             src: '<%= yeoman.dist %>/',
-            dest: '/site/wwwroot'
+            dest: '/site/wwwroot',
+            exclusions: ['<%= yeoman.dist %>/bower_components']
         }
     }
   });
