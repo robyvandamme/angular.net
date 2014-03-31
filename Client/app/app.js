@@ -14,11 +14,11 @@ angular.module('clientApp', [
   .config(function ($routeProvider) {
       $routeProvider
           .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'main/main.html',
         controller: 'MainCtrl'
       })
         .when('/login', {
-        templateUrl: 'views/login.html',
+        templateUrl: 'user/login.html',
         controller: 'LoginCtrl',
         resolve: {
           loggedIn: ['$location', 'localStorageService', function ($location, localStorageService) {
@@ -30,7 +30,7 @@ angular.module('clientApp', [
         }
       })
         .when('/register', {
-        templateUrl: 'views/register.html',
+        templateUrl: 'user/register.html',
         controller: 'RegisterCtrl',
         resolve: {
           loggedIn: ['$location', 'localStorageService', function ($location, localStorageService) {
@@ -42,7 +42,7 @@ angular.module('clientApp', [
         }
       })
           .when('/account', {
-        templateUrl: 'views/account.html',
+        templateUrl: 'user/account.html',
         controller: 'AccountCtrl',
         resolve: {
           authorize: ['$location', 'localStorageService',function ($location, localStorageService) {

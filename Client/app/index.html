@@ -11,13 +11,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css styles/vendor.css -->
+    <!-- build:css assets/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css({.tmp,app}) assets/css/app.css -->
+    <link rel="stylesheet" href="assets/css/app.css">
     <!-- endbuild -->
 </head>
 <body ng-controller="AppCtrl">
@@ -46,8 +46,8 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js --> 
+    <!-- build:js assets/js/vendor.js -->
+    <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
@@ -59,16 +59,16 @@
     <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/app-controller.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/login-controller.js"></script>
-    <script src="scripts/controllers/register-controller.js"></script>
-    <script src="scripts/controllers/account-controller.js"></script>
-    <script src="scripts/account-service.js"></script>
-    <script src="scripts/directives.js"></script>
-    <script src="scripts/constants.js"></script>
+    <!-- build:js({.tmp,app}) assets/js/scripts.js -->
+    <script src="app.js"></script>
+    <script src="app-controller.js"></script>
+    <script src="main/main.js"></script>
+    <script src="user/login-controller.js"></script>
+    <script src="user/register-controller.js"></script>
+    <script src="user/account-controller.js"></script>
+    <script src="services/account-service.js"></script>
+    <script src="common/directives.js"></script>
+    <script src="common/constants.js"></script>
     <!-- endbuild -->
 </body>
 </html>

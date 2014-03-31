@@ -39,20 +39,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app\.buildignore" />
-    <Content Include="app\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="app\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="app\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="app\scripts\account-service.js" />
-    <Content Include="app\scripts\constants.js" />
-    <Content Include="app\scripts\controllers\account-controller.js" />
-    <Content Include="app\scripts\controllers\app-controller.js" />
-    <Content Include="app\scripts\controllers\register-controller.js" />
-    <Content Include="app\scripts\controllers\login-controller.js" />
-    <Content Include="app\scripts\directives.js" />
-    <Content Include="app\views\account.html" />
-    <Content Include="app\views\header.html" />
-    <Content Include="app\views\register.html" />
-    <Content Include="app\views\login.html" />
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\assets\img\yeoman.png" />
+    <Content Include="app\services\account-service.js" />
+    <Content Include="app\app.js" />
+    <Content Include="app\user\account-controller.js" />
+    <Content Include="app\app-controller.js" />
+    <Content Include="app\user\login-controller.js" />
+    <Content Include="app\main\main.js" />
+    <Content Include="app\user\register-controller.js" />
+    <Content Include="app\common\directives.js" />
+    <Content Include="app\common\constants.js" />
+    <Content Include="app\assets\css\app.css" />
+    <Content Include="app\user\account.html" />
+    <Content Include="app\common\header.html" />
+    <Content Include="app\user\login.html" />
+    <Content Include="app\main\main.html" />
+    <Content Include="app\user\register.html" />
     <Content Include="Gruntfile.js" />
     <Content Include="karma-e2e.conf.js" />
     <Content Include="karma.conf.js" />
@@ -62,14 +65,8 @@
   <ItemGroup>
     <Content Include="app\404.html" />
     <Content Include="app\favicon.ico" />
-    <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="app\images\yeoman.png" />
     <Content Include="app\index.html" />
     <Content Include="app\robots.txt" />
-    <Content Include="app\scripts\app.js" />
-    <Content Include="app\scripts\controllers\main.js" />
-    <Content Include="app\styles\main.css" />
-    <Content Include="app\views\main.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="test\.jshintrc" />
@@ -85,6 +82,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
