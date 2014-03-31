@@ -103,7 +103,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.app %>/{,*/}*.js'
       ],
       test: {
         options: {
@@ -136,9 +136,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '.tmp/assets/css/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '.tmp/assets/css/'
         }]
       }
     },
@@ -228,9 +228,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
+          cwd: '.tmp/concat/assets/js',
           src: '*.js',
-          dest: '.tmp/concat/scripts'
+          dest: '.tmp/concat/assets/js'
         }]
       }
     },
@@ -259,7 +259,8 @@ module.exports = function (grunt) {
             'user/{,*/}*.html',
             'bower_components/**/*',
             'assets/img/{,*/}*.{webp}',
-            'assets/fonts/*'
+            'assets/fonts/*',
+            'web.config'
           ]
         }, {
           expand: true,
@@ -444,6 +445,5 @@ module.exports = function (grunt) {
 //    's3:prod'
     'ftpush'
   ]);
-
 
 };
