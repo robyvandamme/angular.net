@@ -39,8 +39,56 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app\.buildignore" />
+    <Content Include="app\assets\vendor\flat-ui\css\flat-ui.css" />
     <Content Include="app\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Book.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Calendar.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Chat.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Clipboard.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Compas.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Gift-Box.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Infinity-Loop.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Mail.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Map.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Pensils.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Pocket.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Retina-Ready.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Toilet-Paper.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\png\Watches.png" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\book.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\calendar.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\chat.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\clipboard.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\clocks.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\compas.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\gift-box.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\loop.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\mail.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\map.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\paper-bag.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\pencils.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\retina.svg" />
+    <Content Include="app\assets\vendor\flat-ui\images\icons\svg\toilet-paper.svg" />
     <Content Include="app\assets\img\yeoman.png" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\flat-ui-icons-regular.svg" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-black.svg" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bold.svg" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-italic.svg" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-light.svg" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-regular.svg" />
+    <Content Include="app\assets\vendor\flat-ui\js\application.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\bootstrap-select.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\bootstrap-switch.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\flatui-checkbox.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\flatui-radio.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\html5shiv.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\icon-font-ie7.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\jquery.placeholder.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\jquery.tagsinput.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\respond.min.js" />
+    <Content Include="app\assets\vendor\flat-ui\js\typeahead.js" />
     <Content Include="app\services\account-service.js" />
     <Content Include="app\app.js" />
     <Content Include="app\user\account-controller.js" />
@@ -91,6 +139,70 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\assets\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-black.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-black.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-black.woff" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bold.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bold.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bold.woff" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-italic.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-italic.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-italic.woff" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-light.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-light.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-light.woff" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-regular.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-regular.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\lato\lato-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\assets\vendor\flat-ui\fonts\flat-ui-icons-regular.eot" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\flat-ui-icons-regular.ttf" />
+    <Content Include="app\assets\vendor\flat-ui\fonts\flat-ui-icons-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\assets\vendor\flat-ui\less\demo.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\docs.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\flat-ui.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\mixins.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\button-groups.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\buttons.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\caret.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\checkbox-and-radio.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\code.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\dropdown.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\footer.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\forms.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\glyphicons.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\input-groups.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\input-icons.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\local-fonts.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\login.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\navbar.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\pager.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\pagination.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\palette.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\progress-bars.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\scaffolding.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\select.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\share.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\slider.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\switch.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\tagsinput.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\thumbnails.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\tile.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\todo.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\tooltip.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\type.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\typeahead.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\modules\video.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\spaces.less" />
+    <Content Include="app\assets\vendor\flat-ui\less\variables.less" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
