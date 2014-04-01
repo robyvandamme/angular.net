@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('clientApp').controller('AppCtrl', function ($rootScope, localStorageService) {
+angular.module('clientApp').controller('AppCtrl', function ($scope, $location, $rootScope, localStorageService) {
 
     $rootScope.$on('$routeChangeError', function (event, current, previous, rejection) {
         // TODO: here we can check what type of rejection: unauthorized > redirect to login
@@ -15,5 +15,11 @@ angular.module('clientApp').controller('AppCtrl', function ($rootScope, localSto
 
     $rootScope.$on('userchanged', function () {
         $rootScope.user.UserName = localStorageService.get('userName');
-      });
+    });
+
+    $scope.menuClass = function (page) {
+      var current = $location.path().substring(1);
+      return page === current ? "active" : "";
+    };
+
   });

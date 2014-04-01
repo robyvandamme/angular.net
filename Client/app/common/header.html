@@ -11,10 +11,10 @@
         </div>
         <div class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li ng-hide="user.LoggedIn"><a href="/login">Log in</a></li>
-                <li ng-hide="user.LoggedIn"><a href="register">Register</a></li>
-                <li ng-show="user.LoggedIn"><a ng-href="/account">{{ user.UserName }}</a></li>
+                <li ng-class="menuClass('')"><a href="/">Home</a></li>
+                <li ng-hide="user.LoggedIn" ng-class="menuClass('login')"><a href="/login">Log in</a></li>
+                <li ng-hide="user.LoggedIn" ng-class="menuClass('register')"><a href=" register">Register</a></li>
+                <li ng-show="user.LoggedIn" ng-class="menuClass('account')"><a ng-href="/account">{{ user.UserName }}</a></li>
                 <li ng-show="user.LoggedIn"><a ng-href="/logout">Log out</a></li>
             </ul>
         </div>

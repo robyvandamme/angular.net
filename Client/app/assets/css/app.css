@@ -1,7 +1,20 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    margin-bottom: 60px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #1abc9c;
 }
 
 .jumbotron {
@@ -36,7 +49,10 @@ body {
     padding-bottom: 15px;
 }
 
-
 .btn-login-social {
     margin-bottom: 10px;
+}
+
+.control-label {
+    font-weight: 700;
 }
