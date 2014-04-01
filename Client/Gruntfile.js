@@ -334,7 +334,7 @@ module.exports = function (grunt) {
             },
         prod: {
             constants: {
-                config: {
+                ENV_CONFIG: {
                     environment: 'prod',
                     apiUrl: 'https://angulardotnet.azurewebsites.net'
                 }
@@ -342,7 +342,7 @@ module.exports = function (grunt) {
         },
         dev: {
             constants: {
-                config: {
+                ENV_CONFIG: {
                     environment: 'dev',
                     apiUrl: 'http://angular.server'
                 }

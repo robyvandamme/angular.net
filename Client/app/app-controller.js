@@ -15,11 +15,11 @@ angular.module('clientApp').controller('AppCtrl', function ($scope, $location, $
 
     $rootScope.$on('userchanged', function () {
         $rootScope.user.UserName = localStorageService.get('userName');
-    });
+      });
 
     $scope.menuClass = function (page) {
       var current = $location.path().substring(1);
-      return page === current ? "active" : "";
+      return page === current ? 'active' : '';
     };
 
   });

@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-angular.module('clientApp').factory('accountService', function ($rootScope, $http, $location, localStorageService, config) {
+angular.module('clientApp').factory('accountService', function ($rootScope, $http, $location, localStorageService, ENV_CONFIG) {
 
-    var apiUrl = config.apiUrl;
+    var apiUrl = ENV_CONFIG.apiUrl;
     var loginUrl = '/token';
     var registerUrl = '/api/account/register';
     var changePasswordUrl = '/api/account/changepassword';

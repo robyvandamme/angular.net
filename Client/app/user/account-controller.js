@@ -6,31 +6,31 @@ angular.module('clientApp').controller('AccountCtrl', function ($scope, localSto
         OldPassword: '',
         NewPassword: '',
         ConfirmPassword: ''
-    };
+      };
 
     $scope.$on('error', function (event, data) {
         $scope.errorMessage = data.errorMessage;
-    });
+      });
 
     $scope.changePassword = function () {
         var promise = accountService.ChangePassword($scope.password);
         promise.then(function () {
             $scope.password = null;
             $scope.form.$setPristine();
-        });
-    };
+          });
+      };
 
     var getAccount = function () {
         var promise = accountService.GetUserAccountInfo();
         promise.then(function(result) {
             console.log(result.data);
             $scope.user = result.data;
-            var localLogin = "Local";
+            var localLogin = 'Local';
             $scope.user.hasLocalPassword = _.findWhere($scope.user.logins, { loginProvider: localLogin }) !== undefined;
             $scope.user.externalAccounts = _.filter($scope.user.logins, function(login) { return login.loginProvider !== localLogin; });
-        });
-    };
+          });
+      };
 
-   getAccount();
+    getAccount();
 
-});
+  });

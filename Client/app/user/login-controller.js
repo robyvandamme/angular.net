@@ -27,7 +27,7 @@ angular.module('clientApp').controller('LoginCtrl', function ($scope, $location,
 
     $scope.loginExternal = function (loginUrl) {
         $window.location = ($scope.apiUrl + loginUrl);
-    };
+      };
 
     // TODO: this gets called twice, make sure we make this call only once.    
     accountService.GetExternalLogins().success(function(result) {

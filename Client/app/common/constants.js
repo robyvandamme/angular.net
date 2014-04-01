@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('constants', [])
-    .constant('config', {
+    .constant('ENV_CONFIG', {
     'environment': 'dev',
     'apiUrl': 'http://angular.server'
   });
