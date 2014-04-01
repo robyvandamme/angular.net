@@ -1,23 +1,30 @@
-﻿<div class="col-sm-6" ng-controller="RegisterCtrl">
-    <form role="form" name="form" novalidate>
-        <h1><small>REGISTER</small></h1>
-        <div id="messages" ng-show="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
-        <div class="form-group">
-            <label for="">User name</label>
-            <input type="text" class="form-control" ng-model="user.username" placeholder="User name" required>
+﻿<div class="content text-center" ng-controller="RegisterCtrl">
+    <div class="container">
+        <div class="row content-section">
+            <div class="col-md-4 col-md-push-4">
+                <h2>Register</h2>
+                <form role="form" name="form" novalidate>
+                    <div id="messages" ng-show="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-center" ng-model="user.username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-center" ng-model="user.email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control text-center" ng-model="user.password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control text-center" ng-model="user.confirmpassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button ng-click="register()" ng-disabled="form.$invalid" class=" btn btn-primary btn-block">Register</button>
+                </form>
+                <p class="text-center small">
+                    Already registered?
+                    <br />
+                    <a href="/login">Login</a>
+                </p>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="">Email</label>
-            <input type="text" class="form-control" ng-model="user.email" placeholder="Email address" required>
-        </div>
-        <div class="form-group">
-            <label for="">Password</label>
-            <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
-        </div>
-        <div class="form-group">
-            <label for="">Confirm Password</label>
-            <input type="password" class="form-control" ng-model="user.confirmpassword" placeholder="Confirm Password" required>
-        </div>
-        <button ng-click="register()" ng-disabled="form.$invalid"  class=" btn btn-default">Register</button>
-    </form>
+    </div>
 </div>

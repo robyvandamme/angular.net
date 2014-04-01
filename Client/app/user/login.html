@@ -1,26 +1,34 @@
-﻿<div class="col-sm-6" ng-controller="LoginCtrl">
-    <form role="form" name="form" novalidate>
-        <h1><small>LOGIN</small></h1>
-        <div id="messages" ng-show="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
-        <div class="form-group">
-            <label>User name</label>
-            <input type="text" class="form-control" ng-model="user.username" placeholder="Your username" required>
+﻿<div class="content text-center" ng-controller="LoginCtrl">
+    <div class="container">
+        <div class="row content-section">
+            <div class="col-md-5 col-md-push-1">
+                <h2>Log in</h2>
+                <form role="form" name="form" novalidate>
+                    <div id="messages" ng-show="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-center" ng-model="user.username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control text-center" ng-model="user.password" placeholder="Password" required>
+                    </div>
+                    <button ng-click="login()" class="btn btn-primary btn-block" ng-disabled="form.$invalid">Log in</button>
+                </form>
+            </div>
+            <div class="col-md-5 col-md-push-1">
+                <h2>OAuth</h2>
+                <ul class="list-unstyled col-md-12">
+                    <li ng-repeat="provider in externalLoginProviders">
+                        <button class="btn btn-inverse btn-block btn-lg btn-login-social" ng-click="loginExternal(provider.url)">{{ provider.name }}</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-push-1">
+                    <p class="text-center small">
+                        <a href="/register">Register</a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
-        </div>
-        <button ng-click="login()" ng-disabled="form.$invalid" class=" btn btn-default">Login</button>
-    </form>
-    <hr />
-    <h1><small>EXTERNAL LOGIN</small></h1>
-    <form name="externalLoginForm" role="form">
-        <ul class="list-inline">
-            <li ng-repeat="provider in externalLoginProviders">
-                <button class="btn btn-default" ng-click="loginExternal(provider.url)">{{ provider.name }}</button>
-            </li>
-        </ul>
-    </form> 
+    </div>
 </div>
-
-

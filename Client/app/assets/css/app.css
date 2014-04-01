@@ -1,2 +1,42 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.jumbotron {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #ECF0F1;
+    color: #16A085;
+}
+
+    .jumbotron h1 {
+        color: #34495E;
+    }
+
+.content {
+    padding-top: 30px;
+}
+
+    .content h2 {
+        padding-top: 15px;
+    }
+
+    .content p {
+        padding-top: 20px;
+    }
+
+.content-section {
+    margin: 5px 5px 5px 5px;
+    background-color: #ECF0F1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-bottom: 15px;
+}
+
+
+.btn-login-social {
+    margin-bottom: 10px;
 }
