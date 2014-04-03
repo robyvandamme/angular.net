@@ -2,12 +2,13 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="clientApp">
- <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="clientApp">
+<!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Angular.NET</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -28,25 +29,27 @@
     <!-- Add your site or application content here -->
     <div>
         <div header></div>
-        <div ng-view=""> 
+        <div ng-view="">
         </div>
         <div id="footer">
-            <div class="container">
-                <p class="text-muted small">Sticky footer</p>
+            <div class="container text-center">
+                <p class="footer-info">
+                    Developed by <a href="http://robyvandamme.com">Roby Van Damme</a> for <a href="http://irobyx.com">iRobyx</a>.
+                </p>
             </div>
         </div>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
-//        (function (i, s, o, g, r, a, m) {
-//            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-//                (i[r].q = i[r].q || []).push(arguments)
-//            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-//            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-//        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-//
-//        ga('create', 'UA-XXXXX-X');
-//        ga('send', 'pageview');
+        //        (function (i, s, o, g, r, a, m) {
+        //            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        //                (i[r].q = i[r].q || []).push(arguments)
+        //            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        //            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        //        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        //
+        //        ga('create', 'UA-XXXXX-X');
+        //        ga('send', 'pageview');
     </script>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
