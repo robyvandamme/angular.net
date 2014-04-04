@@ -89,6 +89,8 @@
     <Content Include="app\assets\vendor\flat-ui\js\jquery.ui.touch-punch.min.js" />
     <Content Include="app\assets\vendor\flat-ui\js\respond.min.js" />
     <Content Include="app\assets\vendor\flat-ui\js\typeahead.js" />
+    <Content Include="app\common\application-constants.js" />
+    <Content Include="app\common\feedback.html" />
     <Content Include="app\services\account-service.js" />
     <Content Include="app\app.js" />
     <Content Include="app\user\account-controller.js" />

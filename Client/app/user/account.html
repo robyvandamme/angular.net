@@ -4,13 +4,13 @@
             <div class="col-sm-6">
                 <h2>Account</h2>
                 <form class="form-horizontal" role="form" name="form" novalidate>
-                    <div id="messages" ng-show="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+                    <div feedback></div>
                     <div class="form-group">
-                        <div class="col-md-9">
-                            You are logged in as <strong>{{ user.userName }}</strong>
+                        <div class="row">
+                            <div class="col-md-7 col-md-push-4">
+                                You are logged in as <strong>{{ user.userName }}</strong>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
                         <label for="" class="col-md-4 control-label">Email</label>
                         <div class="col-md-7">
                             <p class="form-control-static">{{ user.emailAddress }}</p>

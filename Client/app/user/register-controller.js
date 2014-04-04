@@ -9,10 +9,6 @@ angular.module('clientApp').controller('RegisterCtrl', function($scope, $locatio
         ConfirmPassword: ''
       };
 
-    $scope.$on('error', function (event, data) {
-        $scope.errorMessage = data.errorMessage;
-      });
-
     $scope.register = function () {
         var promise = accountService.Register($scope.user);
         promise.then(function () {

@@ -8,10 +8,6 @@ angular.module('clientApp').controller('AccountCtrl', function ($scope, localSto
         ConfirmPassword: ''
       };
 
-    $scope.$on('error', function (event, data) {
-        $scope.errorMessage = data.errorMessage;
-      });
-
     $scope.changePassword = function () {
         var promise = accountService.ChangePassword($scope.password);
         promise.then(function () {
