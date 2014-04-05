@@ -19,7 +19,6 @@ angular.module('clientApp', [
     })
       .when('/login', {
         templateUrl: 'user/login.html',
-        controller: 'LoginCtrl',
         resolve: {
           loggedIn: ['$location', 'localStorageService', function ($location, localStorageService) {
             var token = localStorageService.get('accessToken');
@@ -31,7 +30,6 @@ angular.module('clientApp', [
       })
       .when('/register', {
         templateUrl: 'user/register.html',
-        controller: 'RegisterCtrl',
         resolve: {
           loggedIn: ['$location', 'localStorageService', function ($location, localStorageService) {
             var token = localStorageService.get('accessToken');
@@ -43,7 +41,6 @@ angular.module('clientApp', [
       })
         .when('/account', {
           templateUrl: 'user/account.html',
-          controller: 'AccountCtrl',
           resolve: {
             authorize: ['$location', 'localStorageService', function ($location, localStorageService) {
               var token = localStorageService.get('accessToken');
