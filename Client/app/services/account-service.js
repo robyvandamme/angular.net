@@ -39,7 +39,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
 
   var getExternalLogins = function () {
     // IMPORTANT: we can not use the # in the url, since that gets rejected, see OAUTH specs for more info on this.
-    var returnUrl = $location.$$protocol + '://' + $location.$$host;
+    var returnUrl = $location.$$protocol + '://' + $location.$$host + '/oauth';
     var theUrl = apiUrl + availableExternalLoginsUrl + '?returnurl=' + (encodeURIComponent(returnUrl)) +
           '&generateState=' + 'true'; /// TODO: check what generateState is for....
     return $http.get(theUrl); // TODO; what if this fails?
@@ -55,7 +55,7 @@ angular.module('clientApp').factory('accountService', function ($rootScope, $htt
   var register = function (user) {
     return $http.post(apiUrl + registerUrl, {
       username: user.username,
-      emailaddress: user.email,
+      email: user.email,
       password: user.password,
       confirmpassword: user.confirmpassword
     })

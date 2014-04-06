@@ -58,27 +58,30 @@ angular.module('clientApp', [
             }]
           }
         })
-       .otherwise({
-          redirectTo: '/',
+        .when('/oauth', {
           resolve: {
             inspectUrl: ['$window', '$location', 'localStorageService', 'accountService', function ($window, $location, localStorageService, accountService) {
-              var hash = $window.location.hash;
-             // verify what type of hash this is
-              if (hash.indexOf('access_token') > 0) {
-                var token = hash.substring((hash.indexOf('=') + 1), hash.indexOf('&'));
+              var url = $window.location.href;
+              // verify what type of hash this is
+              if (url.indexOf('access_token') > 0) {
+                // we should only arrive here if we log in using an external login
+                var token = url.substring((url.indexOf('=') + 1), url.indexOf('&'));
                 localStorageService.add('accessToken', token);
-               // so, user logged in? we don't have a user name....
+                // so, user logged in? we don't have a user name....
                 var promise = accountService.GetUserInfo().then(function (result) {
                   $location.url('/account');
                 });
-              } else if (hash.indexOf('error') > 0) {
-               // TODO: ah, we came from where?... can be anything really... currently only oauth though
-               // so show login and an error?
+              } else if (url.indexOf('error') > 0) {
+                // TODO: ah, we came from where?... can be anything really... currently only oauth though
+                // so show login and an error?
               } else {
-               // TODO: what else?
+                // TODO: what else?
               }
             }]
           }
+      })
+       .otherwise({
+          redirectTo: '/' 
         });
   });
 
