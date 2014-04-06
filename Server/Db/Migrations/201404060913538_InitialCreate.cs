@@ -15,22 +15,21 @@ namespace Server.Db.Migrations
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        UserName = c.String(nullable:false, maxLength:128),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        Email = c.String(nullable:false, maxLength:255),
-                        DisplayName = c.String(nullable:false),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
-                    })
+                {
+                    Id = c.String(nullable: false, maxLength: 128),
+                    UserName = c.String(nullable: false, maxLength: 128),
+                    PasswordHash = c.String(),
+                    SecurityStamp = c.String(),
+                    Email = c.String(maxLength: 255),
+                    DisplayName = c.String(nullable: false),
+                    Discriminator = c.String(nullable: false, maxLength: 128),
+                })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique:true)
-                .Index(t => t.Email, unique:true);
+                .Index(t => t.UserName, unique: true);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
